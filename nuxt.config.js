@@ -1,4 +1,8 @@
+import { resolve } from 'path'
+const vueCompositionAPIFullpath = resolve("./node_modules/@vue/composition-api/dist/vue-composition-api.mjs");
+
 export default {
+  alias: {'@vue/composition-api/dist/vue-composition-api.mjs': vueCompositionAPIFullpath},
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'nuxt-vueuse',
@@ -37,5 +41,13 @@ export default {
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {}
+  build: {
+    extend(config) {
+      config.module.rules.push({
+        test: /\.mjs$/,
+        include: /node_modules/,
+        type: "javascript/auto"
+      });
+    }
+  }
 }
