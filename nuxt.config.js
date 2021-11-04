@@ -2,7 +2,11 @@ import { resolve } from 'path'
 const vueCompositionAPIFullpath = resolve("./node_modules/@vue/composition-api/dist/vue-composition-api.mjs");
 
 export default {
-  alias: {'@vue/composition-api/dist/vue-composition-api.mjs': vueCompositionAPIFullpath},
+  // alias: {},
+  alias: {
+    '@vue/composition-api$': '@vue/composition-api/dist/vue-composition-api.mjs',
+    '@vue/composition-api/dist/vue-composition-api.mjs': vueCompositionAPIFullpath,
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'nuxt-vueuse',
